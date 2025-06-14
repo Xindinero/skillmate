@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/ai', async (req, res) => {
-  const prompt = req.body.prompt;
+  const { prompt } = req.body;
 
   try {
     const completion = await openai.chat.completions.create({
@@ -31,6 +31,7 @@ app.post('/api/ai', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Servidor SkillMate funcionando 🚀');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor SkillMate funcionando en puerto ${PORT}`);
 });
